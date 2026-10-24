@@ -1,0 +1,9 @@
+import {Link} from 'react-router-dom';
+import {ArrowRight} from 'lucide-react';
+import {standings} from '../../data/community';
+import {getTeam} from '../../data/teams';
+import {useAppStore} from '../../store/useAppStore';
+import {SectionHead} from '../../components/SectionHead';
+import {TeamBadge} from '../../components/TeamBadge';
+import {Notice} from '../../components/Notice';
+export function StandingsPage(){const favorite=useAppStore(s=>s.preferences.favoriteTeamId);return <div className="page"><SectionHead eyebrow="EVERY RESULT MATTERS" title="League standings" description="Follow the story of the fictional title race with a clear sample table."/><Notice>Illustrative standings for a selected subset of clubs, not an official 20-club league table. Snapshot standings are not recalculated from the limited fixture examples.</Notice><section className="panel standings-panel"><div className="standings-wrap"><table className="standings-table"><thead><tr><th>#</th><th>Club</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr></thead><tbody>{[...standings].sort((a,b)=>b.points-a.points||b.goalDifference-a.goalDifference).map((s,i)=><tr key={s.teamId} className={s.teamId===favorite?'favorite-row':''}><td>{i+1}</td><td><TeamBadge size="sm" teamId={s.teamId}/><strong>{getTeam(s.teamId).name}</strong>{s.teamId===favorite&&<span className="your-club-tag">YOUR CLUB</span>}</td><td>{s.played}</td><td>{s.wins}</td><td>{s.draws}</td><td>{s.losses}</td><td>{s.goalDifference>0?`+${s.goalDifference}`:s.goalDifference}</td><td><strong>{s.points}</strong></td></tr>)}</tbody></table></div></section><section className="panel footnote-panel"><strong>More than a table</strong><p>Ask Matchline about the effect of results on the race. For the MVP, AI uses the fixed mock match and table context, not an actual league simulator.</p><Link to="/matches" className="text-link">Explore match analysis <ArrowRight size={16}/></Link></section></div>}

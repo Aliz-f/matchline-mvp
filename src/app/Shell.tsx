@@ -1,0 +1,13 @@
+import {Link, NavLink, Outlet} from 'react-router-dom';
+import {Bell, Menu, X} from 'lucide-react';
+import {useEffect,useState} from 'react';
+const primaryLinks=[{to:'/',label:'Your journey',end:true},{to:'/stadiums',label:'Matchweek map'},{to:'/standings',label:'Standings'},{to:'/matches',label:'All scores'}];
+const moreLinks=[{to:'/predictions',label:'Predictions'},{to:'/community',label:'Fan community'},{to:'/preferences',label:'Preferences'},{to:'/premium',label:'Premium preview'}];
+export function Brand(){return <Link to="/" className="brand" aria-label="Matchline home"><span className="brand-mark" aria-hidden="true"><i/></span><span>matchline</span></Link>}
+export function Shell(){
+ const [open,setOpen]=useState(false);
+ const [moreOpen,setMoreOpen]=useState(false);
+ const closeMenus=()=>{setOpen(false);setMoreOpen(false)};
+ useEffect(()=>{const onKeyDown=(event:KeyboardEvent)=>{if(event.key==='Escape')closeMenus()};window.addEventListener('keydown',onKeyDown);return()=>window.removeEventListener('keydown',onKeyDown)},[]);
+ return <div className="editorial-shell"><header className="site-header"><div className="site-header-inner"><Brand/><nav className={`site-nav ${open?'is-open':''}`} aria-label="Main navigation">{primaryLinks.map(link=><NavLink key={link.to} to={link.to} end={link.end} onClick={closeMenus}>{link.label}</NavLink>)}<NavLink to="/how-it-works" onClick={closeMenus}>How it works</NavLink><div className="desktop-more"><button type="button" aria-expanded={moreOpen} aria-haspopup="menu" onClick={()=>setMoreOpen(value=>!value)}>More</button>{moreOpen&&<div className="more-menu" role="menu">{moreLinks.map(link=><NavLink key={link.to} to={link.to} role="menuitem" onClick={closeMenus}>{link.label}</NavLink>)}</div>}</div><div className="mobile-extra">{moreLinks.map(link=><NavLink key={link.to} to={link.to} onClick={closeMenus}>{link.label}</NavLink>)}</div></nav><div className="header-account"><button className="icon-button" aria-label="Demo notifications"><Bell size={19}/></button><Link to="/preferences" className="profile-chip" aria-label="Open demo profile"><span>JD</span><b className="profile-word">Profile</b></Link></div><button className="menu-button" aria-expanded={open} onClick={()=>setOpen(value=>!value)} aria-label={open?'Close navigation':'Open navigation'}>{open?<X/>:<Menu/>}</button></div></header><main className="editorial-main"><Outlet/></main><footer className="site-footer"><div><Brand/><span>/</span><strong>Every match. Every possibility.</strong></div><p>Illustrative fixtures &amp; scores · Not live data</p><Link to="/preferences">Privacy &amp; demo settings</Link></footer></div>
+}

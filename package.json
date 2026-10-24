@@ -1,0 +1,37 @@
+{
+  "name": "matchline-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "test:browser": "bash scripts/browser-smoke.sh"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.5.0",
+    "tailwindcss": "^4.1.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.17",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.0",
+    "vitest": "^3.1.0"
+  }
+}
