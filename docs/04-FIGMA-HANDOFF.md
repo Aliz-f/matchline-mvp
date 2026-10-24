@@ -8,7 +8,7 @@
 
 | Screen from Figma | Intended route | Component | Figma URL / node | Priority |
 | --- | --- | --- | --- | --- |
-| Homepage / Match Journey | `/` | `JourneyPage.tsx` | TODO | Must match |
+| Homepage / Match Journey | `/` | `JourneyPage.tsx` | [`fS8yn1fLIWOCEdMA9kIJyt` node `10:1896`](https://www.figma.com/design/fS8yn1fLIWOCEdMA9kIJyt/Untitled?node-id=10-1896) — matched 2026-10-24 (see note below) | Must match |
 | Match centre / detail | `/matches/:id` | `MatchPages.tsx` | TODO | Must match |
 | AI assistant conversation | Embedded in match detail | `AiConversation.tsx` | TODO | Must match |
 | Prediction dashboard | `/predictions` | `PredictionsPage.tsx` | TODO | Must match |
@@ -17,6 +17,8 @@
 | Standings | `/standings` | `StandingsPage.tsx` | TODO | If provided |
 | Team onboarding/preferences | `/preferences` | `PreferencesPage.tsx` | TODO | Must work |
 | Premium/pricing preview | `/premium` | `PremiumPage.tsx` | TODO | Optional polish |
+
+**Journey frame notes (10:1896).** Layout, type (Barlow Condensed + Inter), colours, node states, halo, road geometry and discussion offshoots follow the frame. The road and offshoots are generated from seeded fixtures with the frame's stroke styles, because the exported road images only fit its five fixed nodes. Intentional differences: copy comes from seeded fictional data, not the frame's 2025–26 fixtures; "Remind me" is an "Open match centre" link because no reminder feature exists; reply counts are real post counts. The shared site header and footer are out of scope for this frame.
 
 ## 2. Design extraction: exactly once, by Member 1
 
