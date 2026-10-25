@@ -16,9 +16,6 @@
 
 ![A fictional Matchline comic showing the tension of a league table.](public/_Comic_Image.jpg)
 
-> [!IMPORTANT]
-> Matchline is a **frontend-only demonstration**. All scores, events, standings and community users are fictional, and `live` is a frozen demo status—not a real-time sports feed.
-
 ## ✨ What you can explore
 
 | 🗺️ Follow the story | 💬 Join the conversation | 🏆 Feel the stakes |
@@ -28,7 +25,7 @@
 ## ⚡ Quick start
 
 ```powershell
-cd C:\Users\daneshjoo\Desktop\Junction\matchline-mvp
+cd C:\Users\name\matchline-mvp
 npm install
 Copy-Item .env.example .env.local
 npm run dev
