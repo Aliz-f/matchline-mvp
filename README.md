@@ -1,82 +1,159 @@
-# Matchline MVP — React + TypeScript + fictional football data
+<div align="center">
 
-**Your Team. Your Story. Your Voice.**
+# Matchline
 
-This is a runnable **frontend-only hackathon starter implementation** of Matchline. It contains functional journeys, match details, mock grounded AI, predictions, leaderboards, community participation, stadium pins, personalization and a simulated premium gate. It deliberately does not claim to implement a production sports-media platform.
+### Your Team. Your Story. Your Voice.
 
-## Start in under five minutes
+**An interactive football-media prototype built for the fan journey—not the scoreboard alone.**
 
-Prerequisites: **Node.js 22+**, npm, and an internet connection for the first npm install and the map tiles.
+`React 19` · `TypeScript` · `Vite` · `Zustand` · `Leaflet`
+
+[Run locally](#run-locally) · [Explore routes](#key-routes) · [Contribute](#contributing)
+
+</div>
+
+---
+
+![A fictional Matchline comic showing the tension of a league table.](public/_Comic_Image.jpg)
+
+> [!IMPORTANT]
+> Matchline is a **frontend-only demonstration**. All scores, events, standings and community users are fictional, and `live` is a frozen demo status—not a real-time sports feed.
+
+## ✨ What you can explore
+
+| 🗺️ Follow the story | 💬 Join the conversation | 🏆 Feel the stakes |
+| --- | --- | --- |
+| A personalized, Candy Crush-inspired Match Journey and stadium map. | Match-grounded AI demo and local fan discussions. | Fictional standings, deterministic predictions and a local leaderboard. |
+
+## ⚡ Quick start
+
+```powershell
+cd C:\Users\daneshjoo\Desktop\Junction\matchline-mvp
+npm install
+Copy-Item .env.example .env.local
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173), or jump straight to [the standings](http://localhost:5173/standings).
+
+## 🧰 Prerequisites
+
+- [Node.js 22 LTS or newer](https://nodejs.org/) (includes npm)
+- Git
+- An internet connection for the first dependency install and map tiles
+
+Check that Node.js and npm are available:
+
+```powershell
+node -v
+npm -v
+```
+
+If PowerShell says that `node` or `npm` is not recognized, install Node.js LTS from [nodejs.org](https://nodejs.org/), keep the **Add to PATH** option enabled, then close and reopen PowerShell.
+
+## 🚀 Run locally
+
+### Windows / PowerShell
+
+```powershell
+cd C:\Users\daneshjoo\Desktop\Junction\matchline-mvp
+npm install
+Copy-Item .env.example .env.local
+npm run dev
+```
+
+Open the URL Vite prints in the terminal, usually [http://localhost:5173](http://localhost:5173). To view the standings page directly, open [http://localhost:5173/standings](http://localhost:5173/standings).
+
+### macOS / Linux
 
 ```bash
+cd path/to/matchline-mvp
 npm install
 cp .env.example .env.local
 npm run dev
 ```
 
-Open the URL printed by Vite, normally <http://localhost:5173>.
+## 🧪 Available commands
 
-No OpenRouter key is needed: `VITE_AI_MODE=mock` produces reliable offline demo responses. To use actual AI calls, edit `.env.local`:
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite development server. |
+| `npm run typecheck` | Check TypeScript types without creating a build. |
+| `npm run test` | Run the Vitest test suite once. |
+| `npm run build` | Create a production build in `dist/`. |
+| `npm run check` | Run typecheck, tests and production build together. |
+| `npm run preview` | Serve the latest production build locally. |
 
-```dotenv
-VITE_AI_MODE=live
-VITE_OPENROUTER_API_KEY=your_temporary_key_here
-VITE_OPENROUTER_MODEL=openai/gpt-4o-mini
-```
+Before opening a pull request, run:
 
-Restart Vite after `.env.local` changes. Direct browser calls are convenient **but expose the key in browser traffic and built JavaScript**, and may encounter origin/CORS restrictions. Do **not** commit or publicly deploy a working key. Use a restricted, low-limit, temporary key, revoke it immediately afterward, and switch back to `mock` before sharing a public demo URL. If the endpoint rejects browser-origin traffic, use offline mode or a tiny serverless relay instead of fighting the browser.
-
-## What is implemented
-
-| Route | Experience | Data | Owner |
-| --- | --- | --- | --- |
-| `/` | Personalized Candy Crush-inspired Match Journey + CTA dashboard | Mock | Member 1 |
-| `/matches` | Filtered list of sample fixtures | Mock | Member 2 |
-| `/matches/:id` | Match stats, events, lineups, cross-match narrative and AI chat | Mock + optional OpenRouter | Members 2/3 boundary |
-| `/stadiums` | Leaflet map, statuses, navigation to matches | Approximate real coordinates + simulated activity | Member 2 |
-| `/predictions` | Open predictions, local save, transparent scoring, leaderboard | Mock + localStorage | Member 3 |
-| `/community` | Discussion posts, replies, likes, report-to-hide, premium topic gate | Mock + localStorage | Member 3 |
-| `/standings` | Fictional partial league table | Mock | Member 2 |
-| `/preferences` | Favorite club, tone, length, interests, consent toggle, reset | localStorage | Member 1 |
-| `/premium` | Free/premium capability preview; premium topic creation demo | localStorage | Member 3 |
-
-**Terminology:** `live` is a frozen **mock status**. Scores, events, standings, fixture dates, player labels and predicted leaderboard users are invented for demonstration. Stadium names and approximate coordinates refer to real locations. No external sports feed, user account, moderation backend, billing, GDPR compliance implementation, data license or production reliability claim is included.
-
-## Quality commands
-
-```bash
-npm run typecheck
-npm run test
-npm run build
+```powershell
 npm run check
 ```
 
-`npm run check` has passed in this workspace. Production preview route fallback was also verified for `/matches/m01` and `/stadiums`. Human interaction, keyboard, map-network and target-device checks remain required; use the Q01–Q20 checklist in `docs/06-INTEGRATION-QA.md`. **After your first successful `npm install`, commit its generated `package-lock.json`** to keep dependency resolution consistent for all three developers.
+## 🤖 Optional AI demo
 
-## Team collaboration
+The safe default is offline mock mode. It needs no key or network request:
 
-Read, **in order**:
-1. [`docs/00-START-HERE.md`](docs/00-START-HERE.md) — quick decision log and how to parallelize.
-2. [`docs/01-MVP-SCOPE.md`](docs/01-MVP-SCOPE.md) — in/out of scope and acceptance.
-3. [`docs/02-ARCHITECTURE.md`](docs/02-ARCHITECTURE.md) — state, routes, data and AI.
-4. [`docs/03-DATA-CONTRACT.md`](docs/03-DATA-CONTRACT.md) — canonical football model and invariants.
-5. [`docs/04-FIGMA-HANDOFF.md`](docs/04-FIGMA-HANDOFF.md) — match real frames to routes. Figma URLs were not supplied.
-6. [`docs/05-TEAM-TASKS.md`](docs/05-TEAM-TASKS.md) — issue-level ownership for three people.
-7. [`docs/06-INTEGRATION-QA.md`](docs/06-INTEGRATION-QA.md) — test gates and conflicts.
-8. [`docs/07-DEMO-SCRIPT.md`](docs/07-DEMO-SCRIPT.md) — compelling five-minute presentation flow.
-9. [`docs/08-AI-INTEGRATION.md`](docs/08-AI-INTEGRATION.md) — prompts, costs, errors, factual guardrails.
-10. [`docs/09-REQUIREMENTS-TRACEABILITY.md`](docs/09-REQUIREMENTS-TRACEABILITY.md) — scope vs original business model.
-11. [`docs/10-AGENT-PROMPTS.md`](docs/10-AGENT-PROMPTS.md) — ready to paste into Codex/Claude.
-12. [`docs/11-VALIDATION-STATUS.md`](docs/11-VALIDATION-STATUS.md) — what was actually checked during generation.
-13. [`docs/SOURCE_Matchline_Business_Model.md`](docs/SOURCE_Matchline_Business_Model.md) — unchanged supplied business-model source.
+```dotenv
+# .env.local
+VITE_AI_MODE=mock
+VITE_OPENROUTER_API_KEY=
+VITE_OPENROUTER_MODEL=openai/gpt-4o-mini
+```
 
-### Build and deployment
+To try direct OpenRouter calls locally, use a temporary, low-limit key only:
 
-- For static hosting, run `npm run build` and deploy `dist/`.
-- `BrowserRouter` requires SPA fallback: all unknown paths should serve `index.html`. Platforms such as Netlify can use the included `_redirects` in `public`.
-- The default UI is a light editorial Matchline system using centralized CSS tokens. It follows the supplied visual references but is not a pixel-perfect transcription: no inspectable Figma file, licensed stadium photography, or terrain-map artwork was supplied. Provide frame URLs/node IDs before asserting visual parity.
-- Use `git switch -c feat/member-one` etc. Do not run two agents on the same branch or shared files.
+```dotenv
+VITE_AI_MODE=live
+VITE_OPENROUTER_API_KEY=your-temporary-key
+VITE_OPENROUTER_MODEL=openai/gpt-4o-mini
+```
 
-## Source attribution
+Restart `npm run dev` after editing `.env.local`. Any value prefixed with `VITE_` is exposed to the browser, so never commit, deploy publicly or reuse a working API key. Switch back to `mock` after a controlled demo.
 
-Scope is based on the supplied **Matchline — Business Model and Higher-Level Requirements Specification**. The product plan describes far more production capabilities than this demo; see scope matrix before making technical claims. OpenRouter API documentation: <https://openrouter.ai/docs>. Tailwind Vite documentation: <https://tailwindcss.com/docs/installation/using-vite>.
+## 🧭 Key routes
+
+| Route | What it shows |
+| --- | --- |
+| `/` | Personalized Match Journey |
+| `/matches` | Filterable fixture list |
+| `/matches/:id` | Match details, events, stats and AI conversation |
+| `/stadiums` | Stadium map with simulated fixture activity |
+| `/predictions` | Local score predictions and leaderboard |
+| `/community` | Local match discussions |
+| `/standings` | Fictional partial league table and comic |
+| `/preferences` | Favorite club and story preferences |
+| `/premium` | Simulated premium capability preview |
+
+## 🎯 Project boundaries
+
+- No backend, authentication, payments or real sports-data API is included.
+- User preferences, predictions and community interactions are stored only in browser `localStorage`.
+- Prediction scoring is deterministic: **5** points for an exact result, **3** for a correct outcome and **0** otherwise.
+- The stadium map uses approximate real-world locations; its match activity remains fictional.
+
+## 📦 Deployment notes
+
+Build the static site with:
+
+```bash
+npm run build
+```
+
+Deploy the generated `dist/` directory to a static host. The app uses `BrowserRouter`, so configure an SPA fallback that serves `index.html` for unknown paths. Netlify can use the included `public/_redirects` file.
+
+## 🛟 Troubleshooting
+
+| Problem | What to do |
+| --- | --- |
+| `node` or `npm` is not recognized | Install Node.js LTS, ensure it is added to PATH, then reopen the terminal. |
+| `npm install` fails | Confirm the internet connection and retry; corporate proxy settings may need configuration. |
+| Port 5173 is busy | Vite will offer another port; open the replacement URL printed in the terminal. |
+| AI call fails | Use `VITE_AI_MODE=mock`; browser-origin and CORS restrictions can block direct OpenRouter requests. |
+| Map tiles do not load | The rest of the app remains usable; tiles require network access. |
+
+## 🤝 Contributing
+
+Read [AGENTS.md](AGENTS.md) and the documents in [`docs/`](docs/) before changing code. In particular, preserve the canonical mock data in `src/data/`, do not introduce real match claims, and do not commit `.env.local` or API credentials.
+
+For the full test and route checklist, see [docs/06-INTEGRATION-QA.md](docs/06-INTEGRATION-QA.md).
