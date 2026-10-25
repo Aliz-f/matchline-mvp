@@ -13,6 +13,7 @@ const PreferencesPage=lazy(()=>import('../features/preferences/PreferencesPage')
 const PremiumPage=lazy(()=>import('../features/premium/PremiumPage').then(({PremiumPage})=>({default:PremiumPage})));
 const WelcomePage=lazy(()=>import('../features/preferences/WelcomePage').then(({WelcomePage})=>({default:WelcomePage})));
 const HowItWorksPage=lazy(()=>import('../features/how-it-works/HowItWorksPage').then(({HowItWorksPage})=>({default:HowItWorksPage})));
+const BusinessModelPage=lazy(()=>import('../features/business-model/BusinessModelPage').then(({BusinessModelPage})=>({default:BusinessModelPage})));
 function Home(){const complete=useAppStore(s=>s.onboardingComplete);return complete?<JourneyPage/>:<Navigate to="/welcome" replace/>}
 function Loading(){return <div className="page"><p className="muted">Loading Matchline…</p></div>}
 export default function App(){return <BrowserRouter><Suspense fallback={<Loading/>}><Routes><Route element={<Shell/>}>
@@ -21,5 +22,6 @@ export default function App(){return <BrowserRouter><Suspense fallback={<Loading
  <Route path="community" element={<CommunityPage/>}/><Route path="standings" element={<StandingsPage/>}/>
  <Route path="preferences" element={<PreferencesPage/>}/><Route path="premium" element={<PremiumPage/>}/>
  <Route path="how-it-works" element={<HowItWorksPage/>}/>
+ <Route path="business-model" element={<BusinessModelPage/>}/>
  <Route path="*" element={<Navigate to="/" replace/>}/>
  </Route></Routes></Suspense></BrowserRouter>}
