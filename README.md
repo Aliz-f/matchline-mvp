@@ -53,7 +53,7 @@ If PowerShell says that `node` or `npm` is not recognized, install Node.js LTS f
 ### Windows / PowerShell
 
 ```powershell
-cd C:\Users\daneshjoo\Desktop\Junction\matchline-mvp
+cd C:\Users\name\matchline-mvp
 npm install
 Copy-Item .env.example .env.local
 npm run dev
