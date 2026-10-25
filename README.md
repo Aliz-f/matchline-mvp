@@ -24,14 +24,11 @@
 
 ## ⚡ Quick start
 
-```powershell
-cd C:\Users\name\matchline-mvp
-npm install
-Copy-Item .env.example .env.local
-npm run dev
-```
+1. Install Node.js 22 LTS or newer.
+2. Clone the repository (or open an existing checkout).
+3. Follow the commands for your operating system in [Run locally](#run-locally).
 
-Open [http://localhost:5173](http://localhost:5173), or jump straight to [the standings](http://localhost:5173/standings).
+When Vite starts, open [http://localhost:5173](http://localhost:5173). You can also jump straight to [the standings](http://localhost:5173/standings).
 
 ## 🧰 Prerequisites
 
@@ -39,36 +36,63 @@ Open [http://localhost:5173](http://localhost:5173), or jump straight to [the st
 - Git
 - An internet connection for the first dependency install and map tiles
 
-Check that Node.js and npm are available:
+Check that Node.js, npm, and Git are available:
 
-```powershell
+```text
 node -v
 npm -v
+git --version
 ```
 
-If PowerShell says that `node` or `npm` is not recognized, install Node.js LTS from [nodejs.org](https://nodejs.org/), keep the **Add to PATH** option enabled, then close and reopen PowerShell.
+On Windows, use the Node.js installer and keep **Add to PATH** enabled. On macOS and Linux, the Node.js installer from [nodejs.org](https://nodejs.org/) works on supported systems; a version manager is also fine. Restart your terminal after installation if `node` or `npm` is not found.
 
 ## 🚀 Run locally
 
-### Windows / PowerShell
+If you have not cloned the project yet, run the clone command for your platform first. If you already have it, start with `cd`.
+
+### Windows — PowerShell
 
 ```powershell
-cd C:\Users\name\matchline-mvp
-npm install
+git clone https://github.com/Aliz-f/matchline-mvp.git
+cd .\matchline-mvp
+npm ci
 Copy-Item .env.example .env.local
 npm run dev
 ```
 
 Open the URL Vite prints in the terminal, usually [http://localhost:5173](http://localhost:5173). To view the standings page directly, open [http://localhost:5173/standings](http://localhost:5173/standings).
 
-### macOS / Linux
+### Windows — Command Prompt
+
+```bat
+git clone https://github.com/Aliz-f/matchline-mvp.git
+cd matchline-mvp
+npm ci
+copy .env.example .env.local
+npm run dev
+```
+
+### macOS
 
 ```bash
-cd path/to/matchline-mvp
-npm install
+git clone https://github.com/Aliz-f/matchline-mvp.git
+cd matchline-mvp
+npm ci
 cp .env.example .env.local
 npm run dev
 ```
+
+### Linux
+
+```bash
+git clone https://github.com/Aliz-f/matchline-mvp.git
+cd matchline-mvp
+npm ci
+cp .env.example .env.local
+npm run dev
+```
+
+`npm ci` uses the committed lockfile for a reproducible install. If you intentionally change dependencies, run `npm install` instead to update `package-lock.json`.
 
 ## 🧪 Available commands
 
@@ -81,9 +105,9 @@ npm run dev
 | `npm run check` | Run typecheck, tests and production build together. |
 | `npm run preview` | Serve the latest production build locally. |
 
-Before opening a pull request, run:
+Before opening a pull request, run the same command on every platform:
 
-```powershell
+```bash
 npm run check
 ```
 
